@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.time.LocalDateTime;
 
 @Controller
-@CrossOrigin("http://localhost:3000") // frontend url
+@CrossOrigin(origins = "${FRONTEND_URL}") // frontend url
 public class ChatController {
     private RoomRepository roomRepository;
     public ChatController(RoomRepository roomRepository) {

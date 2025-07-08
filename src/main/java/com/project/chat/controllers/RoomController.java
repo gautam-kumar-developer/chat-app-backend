@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
-@CrossOrigin("http://localhost:3000") // frontend url
+@CrossOrigin(origins = "${FRONTEND_URL}") // frontend url
 public class RoomController {
     private final RoomRepository roomRepository;
 
