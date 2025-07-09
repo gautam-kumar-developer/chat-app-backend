@@ -3,6 +3,7 @@ package com.project.chat.controllers;
 import com.project.chat.entities.Message;
 import com.project.chat.entities.Room;
 import com.project.chat.repositories.RoomRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +12,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
-@CrossOrigin(origins = "${FRONTEND_URL}") // frontend url
+@CrossOrigin("https://rumora.netlify.app") // frontend url
 public class RoomController {
+    @Autowired
     private final RoomRepository roomRepository;
 
     public RoomController(RoomRepository roomRepository) {

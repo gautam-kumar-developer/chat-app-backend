@@ -20,14 +20,14 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                                                             // server-side : @MessagingMapping("/chat")
     }
 
-    @Value("${FRONTEND_URL}")
-    private String frontendUrl;
+//    @Value("${frontend.url}")
+//    private String frontendUrl;
 
     // Connection will be established on this /chat endpoint
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/chat")
-                .setAllowedOrigins(frontendUrl) //url of frontend
+                .setAllowedOrigins("https://rumora.netlify.app") //url of frontend
                 .withSockJS();
     }
 

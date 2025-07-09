@@ -4,6 +4,7 @@ import com.project.chat.entities.Message;
 import com.project.chat.entities.Room;
 import com.project.chat.playload.MessageRequest;
 import com.project.chat.repositories.RoomRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.time.LocalDateTime;
 
 @Controller
-@CrossOrigin(origins = "${FRONTEND_URL}") // frontend url
+@CrossOrigin("https://rumora.netlify.app") // frontend url
 public class ChatController {
+    @Autowired
     private RoomRepository roomRepository;
     public ChatController(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
