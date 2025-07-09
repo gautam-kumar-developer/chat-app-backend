@@ -1,14 +1,12 @@
-# Use a Java 21 JDK image to run the Spring Boot app
+# Stage 1: Build the app
+FROM maven:3.9.5-eclipse-temurin-21 AS build
+WORKDIR /build
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the app
 FROM eclipse-temurin:21-jdk
-
-# Set the working directory
 WORKDIR /app
-
-# Copy the jar file from the target folder to the working directory
-COPY target/chat-app-backend-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose port 8080 (optional, just a hint for users)
+COPY --from=build /build/target/chat-app-backend-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
